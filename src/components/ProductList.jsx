@@ -29,7 +29,7 @@ function ProductList() {
   };
 
   return (
-    <div classname="app">
+    <div className="product-list-and-search">
       <h2>Recherche un produit dans notre base de données :</h2>
       <div className="search-bar">
         <form className="search-form" onSubmit={getSearch}>
@@ -46,7 +46,7 @@ function ProductList() {
         </form>
       </div>
 
-      <h3>Résultats de la recherche</h3>
+      <h3>Résultats de la recherche : </h3>
 
       <div className="product-list">
         {products.map((product) => (

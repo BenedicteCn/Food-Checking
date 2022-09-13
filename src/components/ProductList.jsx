@@ -3,11 +3,20 @@ import ProductCard from "./ProductCard";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./components.css";
+import ReactPaginate from "react-paginate";
 
 function ProductList() {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [query, setQuery] = useState("");
+  const [pageNumber, setPageNumber] = useState(0)
+
+  const productsPerPage = 8
+  const pagesVisited = pageNumber * productsPerPage
+  const pageCount = Math.ceil(products.length / productsPerPage)
+  const changePage = ({selected}) => {
+    setPageNumber(selected)
+  } 
 
   useEffect(() => {
     axios
@@ -17,9 +26,6 @@ function ProductList() {
       .then((response) => {
         console.log("response.data", response.data.products);
         setProducts(response.data.products);
-      })
-      .catch((err) => {
-        console.error(err);
       });
   }, [query]);
 
@@ -28,8 +34,9 @@ function ProductList() {
     setQuery(searchTerm);
   };
 
+
   return (
-    <div className="product-list-and-search">
+    <div classname="product-list-component">
       <h2>Recherche un produit dans notre base de données :</h2>
       <div className="search-bar">
         <form className="search-form" onSubmit={getSearch}>
@@ -46,13 +53,29 @@ function ProductList() {
         </form>
       </div>
 
-      <h3>Résultats de la recherche : </h3>
+      <h3>Résultats de la recherche</h3>
 
       <div className="product-list">
-        {products.map((product) => (
+        {products
+        .slice(pagesVisited, pagesVisited + productsPerPage)
+        .map((product) => (
           <ProductCard product={product} />
         ))}
+
+
       </div>
+
+      <div className="pagination">
+      <ReactPaginate 
+          previousLabel={"Précédent"}
+          nextLabel={"Suivant"}
+          pageCount={pageCount}
+          onPageChange={changePage}
+          containerClassName={"paginationButtons"}
+          previousLinkClassName={'previousButton'}
+        />
+      </div>
+
     </div>
   );
 }

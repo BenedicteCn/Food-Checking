@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react"; // <== IMPORT useEffect
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios"; // <== IMPORT axios
 
 function ProductDetails() {
@@ -37,6 +38,9 @@ function ProductDetails() {
         {oneProduct.ingredients_text}
         </ul>
       </p>
+      <Link to={`/`}>
+        <p>Retour à l'accueil</p>
+      </Link>
     </div>
   );
 }

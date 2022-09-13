@@ -71,8 +71,6 @@ function ProductList() {
           nextLabel={"Suivant"}
           pageCount={pageCount}
           onPageChange={changePage}
-          containerClassName={"paginationButtons"}
-          previousLinkClassName={'previousButton'}
         />
       </div>
 

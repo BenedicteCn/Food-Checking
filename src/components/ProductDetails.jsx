@@ -1,8 +1,10 @@
 import React from "react";
-import { useState, useEffect } from "react"; // <== IMPORT useEffect
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import axios from "axios"; // <== IMPORT axios
+import axios from "axios"; 
+import Home from "../assets/return.png"
+
 
 function ProductDetails() {
   const params = useParams();
@@ -38,9 +40,12 @@ function ProductDetails() {
         {oneProduct.ingredients_text}
         </ul>
       </p>
+      <div className="product-details-back-home">
       <Link to={`/`}>
-        <p>Retour à l'accueil</p>
+        <img src={Home} className="product-destails-home" alt="" width='20px' />
+        Retour à l'accueil
       </Link>
+      </div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "../assets/logo-food-checking.png";
 import { Link } from "react-router-dom";
-import "./components.css";
+import "./Navbar.css";
 import Menu from "../assets/menu.png";
 
 function Navbar() {

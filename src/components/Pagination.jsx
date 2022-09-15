@@ -1,5 +1,5 @@
 import React from "react";
-import "./components.css";
+import "./Pagination.css";
 import ReactPaginate from "react-paginate";
 
 

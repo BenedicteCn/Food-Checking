@@ -1,0 +1,30 @@
+/* Product details component  */
+
+.product-details-component{
+    display:flex;
+    justify-content: center;
+    margin: 1em;
+  }
+  
+  .product-details-card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    max-width: 600px;
+    min-width: 400px;
+    min-height: 500px;
+  }
+  
+  .product-details-back-home {
+    display:flex;
+    justify-content: right;
+    margin: 2em;
+    
+  
+  }
+  
+  .product-details-home{
+    width: 20px;
+  }
+  
+  .product-details-image{
+    max-height: 200px;
+  }

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios"; 
 import Home from "../assets/return.png"
-
+import './ProductDetails.css'
 
 function ProductDetails() {
   const params = useParams();
@@ -16,7 +16,6 @@ function ProductDetails() {
         `https://world.openfoodfacts.org/api/v0/product/${params.id}.json?fields=product_name%2Ccategories%2Cimage_front_url%2Callergens_hierarchy%2Cingredients_text`
       )
       .then((response) => {
-        console.log("response.data", response.data.product);
         setOneProduct(response.data.product);
       })
       .catch((err) => {
@@ -25,10 +24,7 @@ function ProductDetails() {
   }, [params.id]);
 
   const categories = oneProduct.categories
-  console.log('catégories', categories)
   const allergens = oneProduct.allergens_hierarchy
-  console.log('allergens', allergens)
-
 
   return (
     <div className="product-details-component">

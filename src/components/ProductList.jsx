@@ -2,7 +2,7 @@ import React from "react";
 import ProductCard from "./ProductCard";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "./components.css";
+import "./ProductList.css";
 // import ReactPaginate from "react-paginate";
 import FoodScan from "../assets/barcode-scan.png";
 import Loupe from "../assets/magnifying-glass.png";
@@ -21,9 +21,9 @@ function ProductList( {products, setProducts, pageNumber, setPageNumber}) {
         `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${query}&search_simple=1&action=process&fields=id%2Cproduct_name%2Cimage_front_small_url&json=1&page=1&page_size=24`
       )
       .then((response) => {
-        console.log("response.data", response.data.products);
         setProducts(response.data.products);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
   const getSearch = (e) => {
@@ -33,7 +33,7 @@ function ProductList( {products, setProducts, pageNumber, setPageNumber}) {
 
 
   return (
-    <div classname="product-list-component">
+    <div className="product-list-component">
       <h2>Le moteur de recherche de vos produits alimentaires préférés</h2>
       <h4>Nous décryptons et analysons des milliers de produits pour vous renseigner sur leur composition</h4>
       <img className="FoodScan" src={FoodScan} alt="" width="200px"/>

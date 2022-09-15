@@ -1,11 +1,11 @@
 import React from 'react'
-import "./components.css";
+import "./Footer.css";
 
 function Footer() {
   return (
     <>
      <hr></hr>
-    <div className="footer">
+    <div data-testid="footer-1" className="footer">
         <p>@ Food Checking 2022</p>
         </div>
     </>

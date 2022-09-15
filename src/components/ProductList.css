@@ -1,0 +1,50 @@
+/* Product list component */
+
+  .product-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin: 2rem;
+    }
+  
+  .product-list-loupe {
+  
+    width:35px; 
+    height:35px;
+  }
+
+/* Search bar */
+
+.search-bar{
+    padding:0.5em;
+  }
+  
+  .search-form {
+    display:flex;
+    justify-content: center;
+  
+  }
+  
+  input {
+    color: var(--search-box-text);
+    font-family: inherit;
+    font-size: inherit;
+    max-height: 100%;
+    max-width: 100%;
+    width: 650px;
+    height: 35px;
+    border-radius: 20px;
+    border: 2px solid grey;
+    outline: none;
+    padding: 0.3em;
+    margin: 1em;
+  }
+  
+  .search-button{
+  
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }

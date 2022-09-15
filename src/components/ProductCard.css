@@ -1,0 +1,36 @@
+/* Product card component */
+
+.product-card {
+
+  box-shadow: 0px 8px 8px 0px rgba(0,0,0,0.2);
+  min-width: 200px;
+  max-width: 300px;
+  max-height: 300px;
+  padding-bottom: 1em;
+  border-radius: 10px;
+}
+
+
+.product-card:hover {
+
+  box-shadow: 2px 2px 6px rgb(0 0 0 / 60%);
+  max-width: 300px;
+  max-height: 300px;
+  padding-bottom: 1em;
+}
+
+.product-card-image{
+  max-height: 120px;
+}
+
+.FoodScan {
+
+  padding-top: 3em;
+  padding: 2em;
+}
+
+
+a {
+  text-decoration: none;
+  color: grey;
+}

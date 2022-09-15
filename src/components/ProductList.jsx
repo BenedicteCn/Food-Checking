@@ -3,20 +3,17 @@ import ProductCard from "./ProductCard";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./components.css";
-import ReactPaginate from "react-paginate";
+// import ReactPaginate from "react-paginate";
+import FoodScan from "../assets/barcode-scan.png";
+import Loupe from "../assets/magnifying-glass.png";
 
-function ProductList() {
-  const [products, setProducts] = useState([]);
+
+function ProductList( {products, setProducts, pageNumber, setPageNumber}) {
   const [searchTerm, setSearchTerm] = useState("");
   const [query, setQuery] = useState("");
-  const [pageNumber, setPageNumber] = useState(0)
 
   const productsPerPage = 8
   const pagesVisited = pageNumber * productsPerPage
-  const pageCount = Math.ceil(products.length / productsPerPage)
-  const changePage = ({selected}) => {
-    setPageNumber(selected)
-  } 
 
   useEffect(() => {
     axios
@@ -37,7 +34,9 @@ function ProductList() {
 
   return (
     <div classname="product-list-component">
-      <h2>Recherche un produit dans notre base de données :</h2>
+      <h2>Le moteur de recherche de vos produits alimentaires préférés</h2>
+      <h4>Nous décryptons et analysons des milliers de produits pour vous renseigner sur leur composition</h4>
+      <img className="FoodScan" src={FoodScan} alt="" width="200px"/>
       <div className="search-bar">
         <form className="search-form" onSubmit={getSearch}>
           <input
@@ -48,12 +47,12 @@ function ProductList() {
             onChange={(e) => setSearchTerm(e.target.value)}
           ></input>
           <button className="search-button" type="submit">
-            Chercher
+            <img src={Loupe} className="product-list-loupe" alt="submit" />
           </button>
         </form>
       </div>
 
-      <h3>Résultats de la recherche</h3>
+      <h3>Résultats de la recherche :</h3>
 
       <div className="product-list">
         {products
@@ -64,16 +63,6 @@ function ProductList() {
 
 
       </div>
-
-      <div className="pagination">
-      <ReactPaginate 
-          previousLabel={"Précédent"}
-          nextLabel={"Suivant"}
-          pageCount={pageCount}
-          onPageChange={changePage}
-        />
-      </div>
-
     </div>
   );
 }

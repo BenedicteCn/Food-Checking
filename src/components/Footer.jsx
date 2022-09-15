@@ -3,9 +3,12 @@ import "./components.css";
 
 function Footer() {
   return (
+    <>
+     <hr></hr>
     <div className="footer">
         <p>@ Food Checking 2022</p>
         </div>
+    </>
   )
 }
 

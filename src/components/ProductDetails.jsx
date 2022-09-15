@@ -8,8 +8,6 @@ import Home from "../assets/return.png"
 
 function ProductDetails() {
   const params = useParams();
-  console.log(params.id);
-
   const [oneProduct, setOneProduct] = useState({});
 
   useEffect(() => {
@@ -26,25 +24,32 @@ function ProductDetails() {
       });
   }, [params.id]);
 
+  const categories = oneProduct.categories
+  console.log('catégories', categories)
+  const allergens = oneProduct.allergens_hierarchy
+  console.log('allergens', allergens)
+
+
   return (
-    <div className="product-details">
-      <h3>{oneProduct.product_name}</h3>
-      <img
-        src={oneProduct.image_front_url}
-        alt={oneProduct.product_name}
-      />
-      <p><h4>Catégories :</h4> {oneProduct.categories}</p>
-      <p><h4>Allergènes :</h4> {oneProduct.allergens_hierarchy}</p>
-      <p><h4>Ingrédients : </h4>
-        <ul>
-        {oneProduct.ingredients_text}
-        </ul>
-      </p>
-      <div className="product-details-back-home">
-      <Link to={`/`}>
-        <img src={Home} className="product-destails-home" alt="" width='20px' />
-        Retour à l'accueil
-      </Link>
+    <div className="product-details-component">
+      <div className="product-details-card">
+        <h3>{oneProduct.product_name}</h3>
+        <img
+          src={oneProduct.image_front_url}
+          alt={oneProduct.product_name}
+          className="product-details-image"
+        />
+        <p>Catégories : {categories}</p>
+
+        {(() => {if (allergens && allergens.length !== 0) {return <p>Allergènes : {allergens}</p>}})()}
+
+        <p>Ingrédients : {oneProduct.ingredients_text}</p>
+        <div className="product-details-back-home">
+        <Link to={`/`}>
+          <img src={Home} className="product-details-home" alt="" />
+          Retour à l'accueil
+        </Link>
+        </div>
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ function Footer() {
     <>
      <hr></hr>
     <div data-testid="footer-1" className="footer">
-        <p>@ Food Checking 2022</p>
+        @ Food Checking 2022
         </div>
     </>
   )

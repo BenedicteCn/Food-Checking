@@ -3,12 +3,11 @@ import ProductCard from "./ProductCard";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./ProductList.css";
-// import ReactPaginate from "react-paginate";
 import FoodScan from "../assets/barcode-scan.png";
 import Loupe from "../assets/magnifying-glass.png";
 
 
-function ProductList( {products, setProducts, pageNumber, setPageNumber}) {
+function ProductList({products, setProducts, pageNumber, setPageNumber}) {
   const [searchTerm, setSearchTerm] = useState("");
   const [query, setQuery] = useState("");
 
@@ -18,7 +17,7 @@ function ProductList( {products, setProducts, pageNumber, setPageNumber}) {
   useEffect(() => {
     axios
       .get(
-        `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${query}&search_simple=1&action=process&fields=id%2Cproduct_name%2Cimage_front_small_url&json=1&page=1&page_size=24`
+        `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${query}&search_simple=1&action=process&fields=id%2Cproduct_name%2Cimage_front_small_url&json=1&page=$1&page_size=32`
       )
       .then((response) => {
         setProducts(response.data.products);
@@ -60,8 +59,6 @@ function ProductList( {products, setProducts, pageNumber, setPageNumber}) {
         .map((product) => (
           <ProductCard product={product} />
         ))}
-
-
       </div>
     </div>
   );

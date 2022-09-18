@@ -1,4 +1,8 @@
-/* Product list component */
+  .product-list-component {
+
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
 
   .product-list {
     display: flex;
@@ -6,7 +10,7 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 2rem;
-    margin: 2rem;
+    padding: 1rem;
     }
   
   .product-list-loupe {

@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useParams, useLocation, Link } from "react-router-dom";
 import axios from "axios"; 
 import Home from "../assets/return.png"
 import './ProductDetails.css'
@@ -9,11 +8,13 @@ import './ProductDetails.css'
 function ProductDetails() {
   const params = useParams();
   const [oneProduct, setOneProduct] = useState({});
+  const location = useLocation();
 
   useEffect(() => {
+    const id = location.pathname.replace('/', '');
     axios
       .get(
-        `https://world.openfoodfacts.org/api/v0/product/${params.id}.json?fields=product_name%2Ccategories%2Cimage_front_url%2Callergens_hierarchy%2Cingredients_text`
+        `https://world.openfoodfacts.org/api/v0/product/${id}.json?fields=product_name%2Ccategories%2Cimage_front_url%2Callergens_hierarchy%2Cingredients_text`
       )
       .then((response) => {
         setOneProduct(response.data.product);
@@ -23,13 +24,13 @@ function ProductDetails() {
       });
   }, [params.id]);
 
-  const categories = oneProduct.categories
-  const allergens = oneProduct.allergens_hierarchy
+  const categories = oneProduct.categories;
+  const allergens = oneProduct.allergens_hierarchy;
 
   return (
     <div className="product-details-component">
       <div className="product-details-card">
-        <h3>{oneProduct.product_name}</h3>
+        <h3 id="product-name">{oneProduct.product_name}</h3>
         <img
           src={oneProduct.image_front_url}
           alt={oneProduct.product_name}
@@ -37,7 +38,7 @@ function ProductDetails() {
         />
         <p>Catégories : {categories}</p>
 
-        {(() => {if (allergens && allergens.length !== 0) {return <p>Allergènes : {allergens}</p>}})()}
+        {allergens && allergens.length !== 0 ? <p>Allergènes : {allergens.join(', ')}</p> : ''}
 
         <p>Ingrédients : {oneProduct.ingredients_text}</p>
         <div className="product-details-back-home">

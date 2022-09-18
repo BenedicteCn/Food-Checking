@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# Food checking
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Food checking is a search engine that provides access to thousands of products through the Open Food Facts API.
+Stack used: React.js
 
 ## Available Scripts
 

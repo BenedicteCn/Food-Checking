@@ -1,16 +1,17 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useParams, useLocation, Link } from "react-router-dom";
 import axios from "axios"; 
 import Home from "../assets/return.png"
 import './ProductDetails.css'
 
 function ProductDetails() {
+  const params = useParams();
   const [oneProduct, setOneProduct] = useState({});
   const location = useLocation();
-  const id = location.pathname.replace('/', '');
 
   useEffect(() => {
+    const id = location.pathname.replace('/', '');
     axios
       .get(
         `https://world.openfoodfacts.org/api/v0/product/${id}.json?fields=product_name%2Ccategories%2Cimage_front_url%2Callergens_hierarchy%2Cingredients_text`
@@ -21,7 +22,8 @@ function ProductDetails() {
       .catch((err) => {
         console.error(err);
       });
-  }, [id]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params.id]);
 
   const categories = oneProduct.categories;
   const allergens = oneProduct.allergens_hierarchy;

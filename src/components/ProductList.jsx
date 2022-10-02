@@ -21,6 +21,8 @@ function ProductList({products, setProducts, pageNumber, setPageNumber}) {
       )
       .then((response) => {
         setProducts(response.data.products);
+      }).catch((err) => {
+        console.error(err);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);

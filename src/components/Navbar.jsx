@@ -11,6 +11,9 @@ function Navbar() {
         <img className="navarbar-logo" src={Logo} alt="" />
       </Link>
       <img className="navbar-menu" src={Menu} alt=""/>
+      <Link to="/panier">
+        <button>Panier</button>
+      </Link>
 
     </div>
   );

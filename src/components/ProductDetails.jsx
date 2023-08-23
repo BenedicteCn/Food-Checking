@@ -5,7 +5,7 @@ import axios from "axios";
 import Home from "../assets/return.png"
 import './ProductDetails.css'
 
-function ProductDetails() {
+function ProductDetails( {panier, setPanier}) {
   const params = useParams();
   const [oneProduct, setOneProduct] = useState({});
   const location = useLocation();
@@ -24,6 +24,11 @@ function ProductDetails() {
       });
       // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params.id]);
+
+  function add (oneProduct) {
+    setPanier(oneProduct)
+
+  }
 
   const categories = oneProduct.categories;
   const allergens = oneProduct.allergens_hierarchy;
@@ -48,6 +53,10 @@ function ProductDetails() {
           Retour à l'accueil
         </Link>
         </div>
+
+        <button onClick={ () => add(oneProduct)}>
+          Ajouter au panier
+          </button>
       </div>
     </div>
   );
